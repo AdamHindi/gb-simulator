@@ -38,7 +38,9 @@ public:
         while (SDL_PollEvent(&event)) {
 
             bool pressed = (event.type == SDL_KEYDOWN);
-
+            if (event.window.event == SDL_WINDOWEVENT_CLOSE) {
+                return false;
+            }
             switch (event.key.keysym.sym) {
                 // Direction keys
             case SDLK_RIGHT: input.set_button(GbButton::Right, pressed); break;
